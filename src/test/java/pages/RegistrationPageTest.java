@@ -1,6 +1,5 @@
 package pages;
 
-import io.restassured.response.ValidatableResponse;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +12,6 @@ public class RegistrationPageTest {
     private static WebDriver driver;
     private User user;
     private UserService userService;
-    private String accessToken;
     private UserClient client = new UserClient();
     private UserChecks check = new UserChecks();
     public static final String REGISTRATION_BASE_URL = BASE_URL + "register";

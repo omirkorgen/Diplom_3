@@ -5,12 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import practikum.EnvConfig;
-import practikum.user.User;
 
 import java.time.Duration;
 
 import static org.junit.Assert.assertTrue;
-import static practikum.EnvConfig.EXPLICIT_WAIT;
 
 public class RegistrationPage {
     private final WebDriver driver;

@@ -2,7 +2,6 @@ package practikum.user;
 
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import static practikum.EnvConfig.BASE_URL;
 import static io.restassured.RestAssured.given;
