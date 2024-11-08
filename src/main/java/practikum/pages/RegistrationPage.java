@@ -21,6 +21,7 @@ public class RegistrationPage {
     private final By emailField = By.xpath(".//label[text()=\"Email\"]/following-sibling::input");
     private final By passwordField = By.xpath(".//input[@name=\"Пароль\"]");
     private final By registrationButton = By.xpath(".//button[contains(@class, 'button_button__33qZ0') and text()='Зарегистрироваться']");
+    private final By incorrectPasswordText = By.xpath("//p[text() = \"Некорректный пароль\"]");
 
     public void inputName(String name) {
         driver.findElement(nameField).sendKeys(name);
@@ -34,18 +35,20 @@ public class RegistrationPage {
         driver.findElement(passwordField).sendKeys(password);
     }
 
+    public String getIncorrectPasswordText() {
+        return driver.findElement(incorrectPasswordText).getText();
+    }
+
+
     public void clickRegistrationButton() {
         driver.findElement(registrationButton).click();
     }
+
     public void checkRegistrationButtonIsDisplayed() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text() = \"Зарегистрироваться\"]")));
         assertTrue(driver.findElement(By.xpath("//a[text() = \"Зарегистрироваться\"]")).isDisplayed());
     }
 
-    public void checkIncorrectPasswordTextIsDisplayed() {
-        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text() = \"Некорректный пароль\"]")));
-        assertTrue(driver.findElement(By.xpath("//p[text() = \"Некорректный пароль\"]")).isDisplayed());
-    }
 }
+

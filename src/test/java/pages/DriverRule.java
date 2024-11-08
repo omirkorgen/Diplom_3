@@ -7,8 +7,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import practikum.EnvConfig;
+import practikum.pages.LoginPage;
+import practikum.user.User;
 
 import java.time.Duration;
+
+import static practikum.EnvConfig.BASE_URL;
+
 
 public class DriverRule extends ExternalResource {
     private WebDriver driver;
@@ -48,4 +53,15 @@ public class DriverRule extends ExternalResource {
         driver = new FirefoxDriver(opts);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(EnvConfig.IMPLICIT_WAIT));
     }
+
+    public void login(User user) {
+        driver.get(BASE_URL);
+        var loginPage = new LoginPage(driver);
+        loginPage.clickLoginButton(loginPage.getPersonalAccountButton());
+        loginPage.inputEmail(user.getEmail());
+        loginPage.inputPassword(user.getPassword());
+        loginPage.clickLoginButton(loginPage.getLoginButton());
+    }
+
+
 }

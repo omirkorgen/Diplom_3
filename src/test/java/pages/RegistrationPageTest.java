@@ -1,11 +1,13 @@
 package pages;
 
 import org.junit.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import practikum.pages.RegistrationPage;
 import practikum.user.*;
 
+import static org.junit.Assert.assertEquals;
 import static practikum.EnvConfig.BASE_URL;
 
 public class RegistrationPageTest {
@@ -32,7 +34,7 @@ public class RegistrationPageTest {
         userService.deleteUser();
     }
 
-
+    //Успешную регистрацию
     @Test
     public void successfullyRegistrationTest() {
         WebDriver driver = factory.getDriver();
@@ -45,6 +47,7 @@ public class RegistrationPageTest {
         registrationPage.checkRegistrationButtonIsDisplayed();
     }
 
+    //Ошибка для некорректного пароля. Минимальный пароль — шесть символов
     @Test
     public void incorrectPasswordTest() {
         WebDriver driver = factory.getDriver();
@@ -55,6 +58,7 @@ public class RegistrationPageTest {
         user.setPassword("wrong");
         registrationPage.inputPassword(user.getPassword());
         registrationPage.clickRegistrationButton();
-        registrationPage.checkIncorrectPasswordTextIsDisplayed();
+        assertEquals("Некорректный пароль", registrationPage.getIncorrectPasswordText());
+
     }
 }

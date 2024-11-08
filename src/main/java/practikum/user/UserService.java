@@ -3,11 +3,10 @@ package practikum.user;
 import io.restassured.response.ValidatableResponse;
 
 public class UserService {
-    private UserClient client; // Ваш клиент API
-    private UserChecks check; // Проверки пользователя
-    private User user; // Пользователь, который будет удален
+    private UserClient client;
+    private UserChecks check;
+    private User user;
 
-    // Конструктор для инициализации клиента, проверок и пользователя
     public UserService(UserClient client, UserChecks check, User user) {
         this.client = client;
         this.check = check;
@@ -28,4 +27,5 @@ public class UserService {
         }
 
     }
+
 }
