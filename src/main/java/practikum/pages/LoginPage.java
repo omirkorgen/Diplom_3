@@ -1,5 +1,6 @@
 package practikum.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,15 +25,15 @@ public class LoginPage {
     private final By inputEmail = By.xpath("//label[text()=\"Email\"]/following-sibling::input");
     private final By inputPassword = By.xpath("//input[@name = \"Пароль\"]");
 
-
+    @Step("Клик по кнопке Войти")
     public void clickLoginButton(By button) {
         driver.findElement(button).click();
     }
-
+    @Step("Заполнение email")
     public void inputEmail(String email) {
         driver.findElement(inputEmail).sendKeys(email);
     }
-
+    @Step("Заполнение password")
     public void inputPassword(String password) {
         driver.findElement(inputPassword).sendKeys(password);
     }
@@ -61,12 +62,13 @@ public class LoginPage {
         return loginButton;
     }
 
+    @Step("Проверка отображения кнопки оформить заказ")
     public void checkCreateOrderIsVisible() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()=\"Оформить заказ\"]")));
         assertTrue(driver.findElement(By.xpath("//button[text()=\"Оформить заказ\"]")).isDisplayed());
     }
-
+    @Step("Проверка отображения кнопки Войти")
     public void checkLoginButtonIsVisible() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()=\"Войти\"]")));

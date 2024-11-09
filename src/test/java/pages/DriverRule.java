@@ -2,8 +2,10 @@ package pages;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.rules.ExternalResource;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import practikum.EnvConfig;
@@ -24,6 +26,7 @@ public class DriverRule extends ExternalResource {
 
     @Override
     protected void before() throws Throwable {
+        //System.setProperty("browser", "firefox");
         initDriver();
     }
 
@@ -42,7 +45,9 @@ public class DriverRule extends ExternalResource {
 
     public void startChrome() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(EnvConfig.IMPLICIT_WAIT));
     }
 
