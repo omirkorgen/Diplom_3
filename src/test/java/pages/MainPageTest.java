@@ -3,7 +3,6 @@ package pages;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.*;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import practikum.EnvConfig;
 import practikum.pages.MainPage;

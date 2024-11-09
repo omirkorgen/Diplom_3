@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import practikum.EnvConfig;
 import practikum.pages.RegistrationPage;
 import practikum.user.*;
